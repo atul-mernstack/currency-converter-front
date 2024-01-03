@@ -2,20 +2,22 @@ import axios from 'axios';
 
 export const fetchCurrencyData=async()=>{
     try{
-        const response =await axios.get('https://currency-conversion-server.onrender.com/api/getTopHundredCryptocurrencies');//http://localhost:8080        
-        return response;
-    }catch(err){
-        console.log(err.message)
+        const response =await axios.get('http://localhost:8080/api/getTopHundredCryptocurrencies');       
+        return response;////http://localhost:8080
+        
+    }catch(error){        
+        //console.log(error)
+        return error.response;        
     }
 
 }
 
 export const getConvertedCurrency=async(sourceCrypto,amount,targetCurrency)=>{
     try{
-        const response=await axios.post(`https://currency-conversion-server.onrender.com/api/getConvertedCurrency?sourceCrypto=${sourceCrypto}&amount=${amount}&targetCurrency=${targetCurrency}`);        
+        const response=await axios.post(`http://localhost:8080/api/getConvertedCurrency?sourceCrypto=${sourceCrypto}&amount=${amount}&targetCurrency=${targetCurrency}`);        
         return response.data;
-    }catch(err){
-        console.log(err.message)
+    }catch(error){
+        console.log(error.message)               
     }
 }
 
